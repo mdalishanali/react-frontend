@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
+import ReactGA from "react-ga";
+const TRACKING_ID = "G-7PK2R2M5C8";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+  const handleInc = () => {
+    ReactGA.event({
+      category: "counter",
+      action: "test action",
+      label: "test lable",
+      value: 5,
+    });
+    setCount(count + 1);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Count {count}</h1>
+      <button onClick={handleInc}>Inc</button>
     </div>
   );
 }
