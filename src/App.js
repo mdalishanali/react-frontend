@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import ReactGA from "react-ga";
-const TRACKING_ID = "G-7PK2R2M5C8";
+const TRACKING_ID = "G-61SYRLSX5C";
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
